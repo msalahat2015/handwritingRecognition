@@ -1,91 +1,73 @@
-Handwritten Digit Classification Using CNNs
+# Handwritten Digit Classification Using CNNs
 
-This project implements and compares multiple Convolutional Neural Network (CNN) architectures for handwritten digit classification. The models are trained and evaluated using the Arabic Handwritten Digits Dataset (AHDD) and the MNIST dataset.
+This repository implements and compares multiple Convolutional Neural Network (CNN) architectures for handwritten digit classification. The models are trained and evaluated using the **Arabic Handwritten Digits Dataset (AHDD)**.
 
-📁 Dataset Preparation
-AHDD Dataset
+---
 
-Loaded from Google Drive in CSV format.
+## 📁 Dataset Preparation
 
-Each image is reshaped from a 784-dimensional vector to a 28×28 grayscale image.
+### AHDD Dataset
+- Loaded from Google Drive in CSV format.
+- Each image is reshaped from a 784-dimensional vector to a 28×28 grayscale image.
+- Pixel values are normalized to the range [0, 1].
+- A custom PyTorch `Dataset` and `DataLoader` are used for efficient batching.
 
-Pixel values are normalized to the range 
-[0,1]
-[0,1].
 
-Images are resized to 227×227 to match AlexNet input requirements.
 
-A custom PyTorch Dataset and DataLoader are used for efficient batching and training.
+---
 
-MNIST Dataset
+## 🧠 Models Implemented
 
-Downloaded directly using torchvision.datasets.
+### 1️⃣ AlexNet
+- Modified to accept single-channel grayscale images.
+- Deep convolutional architecture for hierarchical feature extraction.
+- Fully connected layers perform digit classification.
+- Trained using Adam optimizer and evaluated with accuracy, F1-score, and a normalized confusion matrix.
 
-Images are converted to tensors and normalized.
+### 2️⃣ LeNet
+- Classical CNN architecture designed for digit recognition.
+- Uses convolution, ReLU activation, and average pooling.
+- Lightweight and efficient, serving as a baseline model.
+- Performance evaluated using accuracy, F1-score, and confusion matrix.
 
-Used for training and testing LeNet and the Custom CNN models.
+### 3️⃣ Custom CNN
+- Deeper and more flexible CNN architecture.
+- Uses convolutional blocks with batch normalization, ReLU, and max pooling.
+- Applies global average pooling for compact feature representation.
+- Designed to enhance feature learning and classification performance.
 
-🧠 Models Implemented
-1️⃣ AlexNet
+---
 
-Adapted to accept single-channel grayscale images.
+## ⚙️ Training Configuration
 
-Deep convolutional architecture for hierarchical feature extraction.
+- **Loss Function:** Cross-Entropy Loss  
+- **Optimizer:** Adam  
+- **Batch Size:** 64  
+- **Epochs:** 10  
 
-Fully connected layers perform digit classification.
+All models are trained using supervised learning and evaluated on a separate test set.
 
-Optimized using Adam and evaluated with accuracy, F1-score, and a normalized confusion matrix.
+---
 
-2️⃣ LeNet
+## 📊 Evaluation Metrics
 
-Classical CNN architecture designed for digit recognition.
+- Classification Accuracy  
+- Macro F1-score  
+- Normalized Confusion Matrix (saved as high-resolution images)
 
-Uses convolution, ReLU activation, and average pooling.
+---
 
-Lightweight and efficient for baseline performance comparison.
+## 📌 Outputs
 
-Evaluation includes accuracy, F1-score, and confusion matrix visualization.
+- Trained CNN models
+- Training loss per epoch
+- Test accuracy and F1-score
+- Normalized confusion matrix visualizations for each model
 
-3️⃣ Custom CNN
+---
 
-Designed with multiple convolutional blocks.
+## 🚀 Conclusion
 
-Incorporates batch normalization, ReLU activation, and max pooling.
+This project demonstrates and compares the effectiveness of classical, deep, and custom-designed CNN architectures for handwritten digit recognition, highlighting their performance and architectural differences.
 
-Uses global average pooling for compact feature representation.
-
-Provides improved feature learning and robust classification performance.
-
-⚙️ Training & Optimization
-
-Loss Function: Cross-Entropy Loss
-
-Optimizer: Adam
-
-Batch Size: 64
-
-Epochs: 10
-
-Each model is trained using supervised learning and evaluated on a separate test set.
-
-📊 Evaluation Metrics
-
-Classification Accuracy
-
-Macro F1-score
-
-Normalized Confusion Matrix (saved as high-resolution images)
-
-📌 Output
-
-Trained CNN models
-
-Printed training loss per epoch
-
-Accuracy and F1-score results
-
-Confusion matrix visualizations for each model
-
-🚀 Conclusion
-
-This project demonstrates the effectiveness of different CNN architectures for handwritten digit recognition, highlighting the trade-offs between classical, deep, and custom-designed networks.
+---
